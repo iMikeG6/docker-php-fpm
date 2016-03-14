@@ -49,9 +49,8 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install gd imap
 
 # Set up composer variables
-RUN mkdir -p /data/containers/php7-fpm/composer
 ENV COMPOSER_BINARY=/usr/local/bin/composer \
-    COMPOSER_HOME=/data/containers/php7-fpm/composer
+    COMPOSER_HOME=/usr/local/composer
 ENV PATH $PATH:$COMPOSER_HOME
 
 # Install composer system-wide
@@ -64,11 +63,9 @@ COPY php.cli.ini /etc/php7/cli/php.ini
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN mkdir -p /data/www_project
 WORKDIR /var/www
 
 # Expose Ports & Volumes
 EXPOSE 9000
-VOLUME ["/data"]
 
 CMD ["php-fpm", "F"]
