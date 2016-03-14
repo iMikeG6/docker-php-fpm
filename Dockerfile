@@ -68,4 +68,4 @@ WORKDIR /var/www
 # Expose Ports & Volumes
 EXPOSE 9000
 
-CMD ["php-fpm", "F"]
+CMD ["php-fpm", "-F", "-c", "/etc/php7/fpm"]
