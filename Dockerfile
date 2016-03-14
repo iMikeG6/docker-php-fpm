@@ -48,11 +48,6 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
     && docker-php-ext-install gd imap
 
-# Install Supervisor
-CMD ["/usr/local/bin/supervisord", "-c", "/etc/supervisord.conf"]
-RUN curl https://bootstrap.pypa.io/ez_setup.py -o - | python
-RUN easy_install supervisor
-
 # Set up composer variables
 RUN mkdir -p /data/containers/php7-fpm/composer
 ENV COMPOSER_BINARY=/usr/local/bin/composer \
@@ -64,21 +59,16 @@ RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar $COMPOSER_BINARY && \
     chmod +x $COMPOSER_BINARY
 
-# Prepare Config
-RUN mkdir -p /etc/supervisord/
-RUN mkdir /var/log/supervisord
-
-COPY supervisor/supervisor.conf /etc/supervisord.conf
-COPY supervisor/service/* /etc/supervisord/
-
 COPY php.fpm.ini /etc/php7/fpm/php.ini
 COPY php.cli.ini /etc/php7/cli/php.ini
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN mkdir -p /data/www_project
-WORKDIR /data/www_project
+WORKDIR /var/www
 
 # Expose Ports & Volumes
 EXPOSE 9000
 VOLUME ["/data"]
+
+CMD ["php-fpm", "F"]
