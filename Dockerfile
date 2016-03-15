@@ -43,7 +43,7 @@ RUN apt-get update && apt-get install -y \
         libxslt-dev \
         libc-client-dev \
         libkrb5-dev \
-    && docker-php-ext-install calendar bcmath iconv json mcrypt mbstring phar curl ftp intl mysqlnd pdo_mysql hash session simplexml tokenizer xml xmlrpc zip \
+    && docker-php-ext-install calendar bcmath iconv json mcrypt mbstring phar curl ftp intl pdo_mysql hash session simplexml tokenizer xml xmlrpc zip \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
     && docker-php-ext-install gd imap
