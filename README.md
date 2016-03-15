@@ -4,18 +4,12 @@ php7-fpm container from offical.
 
 EXPOSE 9000
 
-VOLUME /data
-
-logs : /data/containers/php7-fpm/logs
-
-composer cache : /data/containers/php7-fpm/composer
-
 ## Extensions :
 
 * calendar
 * bcmath
 * iconv
-* json 
+* json
 * mcrypt
 * mbstring
 * phar
