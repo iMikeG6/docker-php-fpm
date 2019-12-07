@@ -1,39 +1,32 @@
-# docker-php7-fpm
+# docker-php7.4-fpm
 
-php7-fpm container from offical.
+php7.4-fpm container from offical.
 
 EXPOSE 9000
 
 ## Extensions :
 
+* opcache
 * calendar
 * bcmath
-* iconv
+* pdo_mysql
+* tokenizer
 * json
-* mcrypt
+* iconv
 * mbstring
-* phar
 * curl
 * ftp
+* phar
 * intl
-* pdo_mysql
-* hash
 * session
 * simplexml
-* tokenizer
 * xml
 * xmlrpc
 * zip
 * gd
-* imap
+* imagick
 
 ## Tools:
 
-* curl
-* wget
-* python
 * vim
-* nano
-* cron
-* git
 * composer
