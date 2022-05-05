@@ -6,6 +6,13 @@ php7.4-fpm container from official.
 
 EXPOSE 9000
 
+
+```
+docker pull imikeg6/php7-fpm:latest
+```
+
+[Docker hub](https://hub.docker.com/r/imikeg6/php7-fpm)
+
 ## Extensions :
 
 * opcache
