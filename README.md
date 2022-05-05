@@ -1,10 +1,11 @@
 # docker-php7.4-fpm
+*Forked from [Jabsouliman/docker-php7-fpm](https://www.github.com/Jabsouliman/docker-php7-fpm) repo*
 
-php7.4-fpm container from offical.
+Latest php:7.4-fpm image pulled from official repo with extra packages
 
 EXPOSE 9000
 
-## Extensions :
+## Extra php extensions:
 
 * opcache
 * calendar
@@ -26,7 +27,7 @@ EXPOSE 9000
 * gd
 * imagick
 
-## Tools:
+## Extra packages:
 
 * vim
 * composer
