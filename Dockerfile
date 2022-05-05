@@ -58,7 +58,7 @@ RUN apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
-RUN apt-get install -y libmagickwand-dev
+RUN apt-get install -y libmagickwand-dev libpng16-16 libzip4 libgomp1
 RUN pecl install imagick && docker-php-ext-enable imagick
 
 ENV COMPOSER_BINARY=/usr/local/bin/composer \
@@ -72,7 +72,6 @@ RUN curl -sS https://getcomposer.org/installer | php && \
 COPY php.fpm.ini /etc/php7/fpm/php.ini
 COPY php.cli.ini /etc/php7/cli/php.ini
 
-RUN apt-get purge -y --auto-remove gcc libc6-dev make
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /var/www
