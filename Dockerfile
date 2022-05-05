@@ -1,7 +1,7 @@
 FROM php:7.4-fpm
 LABEL maintainer="iMikeG6"
 LABEL description="Latest php:7.4-fpm image pulled from official repo with extra packages"
-LABEL other="Forked from https://www.github.com/Jabsouliman/docker-php7-fpm"
+LABEL url="https://github.com/iMikeG6/docker-php-fpm"
 LABEL release-date="2022-05-05"
 
 RUN apt-get update
@@ -15,6 +15,8 @@ RUN docker-php-ext-install bcmath
 RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install tokenizer
 RUN docker-php-ext-install json
+RUN docker-php-ext-install exif
+RUN docker-php-ext-install mysqli
 
 RUN apt-get install -y \
         libonig-dev \
@@ -38,7 +40,7 @@ RUN apt-get install -y \
 
 RUN apt-get install -y \
         libxml2-dev \
-    && docker-php-ext-install simplexml xml xmlrpc
+    && docker-php-ext-install simplexml xml xmlrpc soap
 
 RUN apt-get install -y \
         libzip-dev \
@@ -70,6 +72,7 @@ RUN curl -sS https://getcomposer.org/installer | php && \
 COPY php.fpm.ini /etc/php7/fpm/php.ini
 COPY php.cli.ini /etc/php7/cli/php.ini
 
+RUN apt-get purge -y --auto-remove gcc libc6-dev make
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /var/www
