@@ -1,6 +1,6 @@
-# docker-php7.4-fpm
+# docker-php-fpm
 
-*Forked from https://www.github.com/Jabsouliman/docker-php7-fpm*
+*Forked from [benjamin-sln/docker-php7-fpm](https://github.com/benjamin-sln/docker-php7-fpm) repo*
 
 php7.4-fpm container from official.
 
