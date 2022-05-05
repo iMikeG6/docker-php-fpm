@@ -1,5 +1,8 @@
 FROM php:7.4-fpm
-LABEL Jabsouliman <benjamin.souliman@gmail.com>
+LABEL maintainer="iMikeG6"
+LABEL description="Latest php:7.4-fpm image pulled from official repo with extra packages"
+LABEL other="Forked from https://www.github.com/Jabsouliman/docker-php7-fpm"
+LABEL release-date="2022-05-05"
 
 RUN apt-get update
 RUN apt-get install -y \
